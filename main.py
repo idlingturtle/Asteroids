@@ -1,11 +1,14 @@
 import pygame
 from logger import log_state
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_RADIUS
+from player import Player
 
 def main():
     pygame.time.Clock()
 
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     dt = 0
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS)
 
     clock = pygame.time.Clock()
 
@@ -15,24 +18,23 @@ def main():
     print("Screen width:",SCREEN_WIDTH)
     print("Screen height:",SCREEN_HEIGHT)
 
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    
 
     while True:
 
         log_state()
 
         for event in pygame.event.get():
-            pass
-        
-        pygame.Surface.fill(screen, (0,0,0))
-
-        clock.tick(60)
-
-        dt = clock.tick(60)/1000
-        
-        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        
+        screen.fill("black")
+        player.draw(screen)
+        pygame.display.flip()
+
+        # limit FPS to 60
+        dt = clock.tick(60)/1000
+        
 
 if __name__ == "__main__":
    main()
