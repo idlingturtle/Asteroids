@@ -4,21 +4,11 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_RADIUS
 from player import Player
 
 def main():
-    pygame.time.Clock()
-
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    dt = 0
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS)
-
-    clock = pygame.time.Clock()
-
     pygame.init()
-
-    print("Starting Asteroids with pygame version:",pygame.version.ver)
-    print("Screen width:",SCREEN_WIDTH)
-    print("Screen height:",SCREEN_HEIGHT)
-
-    
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS)
+    dt = 0
 
     while True:
 
