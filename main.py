@@ -1,5 +1,6 @@
 import pygame
-from logger import log_state
+import sys
+from logger import log_state, log_event
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -38,6 +39,12 @@ def main():
 
         for sprite in drawable:
             sprite.draw(screen)
+
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                log_event("player_hit")
+                print("GAME OVER! TRY AGAIN.")
+                sys.exit()
 
         pygame.display.flip()
 
